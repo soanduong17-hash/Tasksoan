@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Remix Remix Remix Remix TaskMaster AI - Quản Lý \u0026 Nhắc Việc Thông Minh",
+  "description": "Hệ thống quản lý nhiệm vụ thông minh với biểu đồ tổng quan, AI tự động gợi ý công việc \u0026 tài liệu tham khảo, lưu trữ hoàn thành, xuất báo cáo DOCX và cố vấn chiến lược hiệu suất.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

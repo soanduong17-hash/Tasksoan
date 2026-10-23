@@ -1,0 +1,72 @@
+{
+  "user_1792666232361_q3ks": [
+    {
+      "deviceId": "dev_phone_b",
+      "deviceName": "iPhone 15 Safari",
+      "deviceType": "mobile",
+      "browser": "Trình duyệt đối tác",
+      "os": "Hệ điều hành liên kết",
+      "lastActive": "2026-10-23T11:49:44.124Z",
+      "loggedInAt": "2026-10-23T11:49:44.124Z",
+      "status": "online"
+    },
+    {
+      "deviceId": "dev_ipad_test",
+      "deviceName": "iPad Air 5",
+      "deviceType": "mobile",
+      "browser": "Trình duyệt đối tác",
+      "os": "Hệ điều hành liên kết",
+      "lastActive": "2026-10-23T12:03:04.942Z",
+      "loggedInAt": "2026-10-23T12:02:53.094Z",
+      "status": "revoked"
+    },
+    {
+      "deviceId": "dev_6gjjz7jt_mvkzhpkh",
+      "deviceName": "Linux (Google Chrome)",
+      "deviceType": "desktop",
+      "browser": "Google Chrome",
+      "os": "Linux",
+      "lastActive": "2026-10-23T13:14:37.125Z",
+      "loggedInAt": "2026-10-23T13:06:38.905Z",
+      "status": "online",
+      "ip": "127.0.0.1"
+    },
+    {
+      "deviceId": "dev_favejsdl_mvl4u27e",
+      "deviceName": "Linux (Google Chrome)",
+      "deviceType": "desktop",
+      "browser": "Google Chrome",
+      "os": "Linux",
+      "lastActive": "2026-10-23T15:38:31.519Z",
+      "loggedInAt": "2026-10-23T15:36:13.232Z",
+      "status": "online",
+      "ip": "127.0.0.1"
+    }
+  ],
+  "user_1792762804594_zu4c": [
+    {
+      "deviceId": "dev_yupwnwhm_mvl0oxup",
+      "deviceName": "Linux (Google Chrome)",
+      "deviceType": "desktop",
+      "browser": "Google Chrome",
+      "os": "Linux",
+      "lastActive": "2026-10-23T13:41:45.412Z",
+      "loggedInAt": "2026-10-23T13:40:15.847Z",
+      "status": "online",
+      "ip": "127.0.0.1"
+    }
+  ],
+  "user_1792765168414_xgga": [
+    {
+      "deviceId": "dev_4mey3g25_mvl249fr",
+      "deviceName": "Linux (Google Chrome)",
+      "deviceType": "desktop",
+      "browser": "Google Chrome",
+      "os": "Linux",
+      "lastActive": "2026-10-23T14:27:04.033Z",
+      "loggedInAt": "2026-10-23T14:20:10.315Z",
+      "status": "online",
+      "ip": "127.0.0.1"
+    }
+  ]
+}

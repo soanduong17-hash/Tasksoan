@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskMaster AI - Quản Lý & Nhắc Việc Thông Minh</title>
+    <meta name="description" content="Hệ thống quản lý nhiệm vụ thông minh với biểu đồ tổng quan, AI tự động gợi ý công việc & tài liệu tham khảo, lưu trữ hoàn thành, xuất báo cáo DOCX và cố vấn chiến lược hiệu suất." />
+    <meta property="og:title" content="TaskMaster AI - Quản Lý & Nhắc Việc Thông Minh" />
+    <meta property="og:description" content="Hệ thống quản lý nhiệm vụ thông minh với biểu đồ tổng quan, AI tự động gợi ý công việc & tài liệu tham khảo, lưu trữ hoàn thành, xuất báo cáo DOCX và cố vấn chiến lược hiệu suất." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Fix for React 19 in cross-origin iframes (AI Studio preview):
+      // In development mode, React 19 User Timing profiling attempts to diff props on re-renders,
+      // traversing objects and DOM elements up to window.parent, causing SecurityError when checking $$typeof.
+      // Setting console.timeStamp = undefined safely disables React 19 User Timing without affecting functionality.
+      try {
+        if (typeof console !== 'undefined') {
+          Object.defineProperty(console, 'timeStamp', {
+            value: undefined,
+            writable: true,
+            configurable: true
+          });
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased font-['Be_Vietnam_Pro',sans-serif] selection:bg-indigo-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

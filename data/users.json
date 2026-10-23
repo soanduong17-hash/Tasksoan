@@ -1,0 +1,160 @@
+[
+  {
+    "id": "user_1792666232361_q3ks",
+    "username": "test_canbo",
+    "email": "canbo@example.com",
+    "password": "mypassword123",
+    "isProfileCompleted": true,
+    "profile": {
+      "displayName": "test_canbo",
+      "role": "Bí thư Chi đoàn",
+      "units": [
+        "Ban Thanh Niên",
+        "Chi hội 1"
+      ],
+      "birthDate": "1995-01-01",
+      "avatarUrl": "https://api.dicebear.com/7.x/initials/svg?seed=test_canbo",
+      "email": "canbo@example.com",
+      "phone": "",
+      "weeklyGoal": 3,
+      "notifications": {
+        "browserEnabled": true,
+        "soundEnabled": true,
+        "priorityReminders": true,
+        "overdueAlerts": true
+      },
+      "connectedAppsList": [],
+      "bio": ""
+    },
+    "createdAt": "2026-10-22T10:50:32.361Z",
+    "lastSyncedAt": "2026-10-23T11:49:55.290Z",
+    "syncCode": "TM-KFQS",
+    "pairedUserId": "user_g_1792671645676_f5xd",
+    "pairedUserName": "Cán bộ Quản lý",
+    "pairedSyncCode": "TM-3GMY",
+    "pairedAt": "2026-10-23T09:39:14.803Z",
+    "lastActiveAt": "2026-10-23T15:36:13.101Z"
+  },
+  {
+    "id": "user_g_1792671645676_f5xd",
+    "username": "soandn01_cesg_vn",
+    "email": "soandn01.cesg.vn@gmail.com",
+    "authProvider": "password",
+    "isProfileCompleted": true,
+    "profile": {
+      "displayName": "Cán bộ Quản lý",
+      "role": "Cán bộ phụ trách",
+      "units": [
+        "Ban Thanh Niên",
+        "Chi hội 1"
+      ],
+      "birthDate": "1995-01-01",
+      "avatarUrl": "https://api.dicebear.com/7.x/initials/svg?seed=C%C3%A1n%20b%E1%BB%99%20Qu%E1%BA%A3n%20l%C3%BD",
+      "email": "soandn01.cesg.vn@gmail.com",
+      "phone": "",
+      "weeklyGoal": 4,
+      "notifications": {
+        "browserEnabled": true,
+        "soundEnabled": true,
+        "priorityReminders": true,
+        "overdueAlerts": true
+      },
+      "connectedAppsList": [
+        {
+          "id": "app_gcal",
+          "name": "Google Calendar",
+          "url": "https://calendar.google.com",
+          "category": "calendar",
+          "description": "Đồng bộ lịch công tác tuần và tự động nhắc việc",
+          "isConnected": true,
+          "addedAt": "2026-10-22T12:20:45.676Z",
+          "iconKey": "calendar"
+        },
+        {
+          "id": "app_gdrive",
+          "name": "Google Drive & Docs",
+          "url": "https://drive.google.com",
+          "category": "storage",
+          "description": "Kho lưu trữ biên bản, nghị quyết và hồ sơ nhiệm vụ",
+          "isConnected": true,
+          "addedAt": "2026-10-22T12:20:45.676Z",
+          "iconKey": "drive"
+        }
+      ]
+    },
+    "createdAt": "2026-10-22T12:20:45.676Z",
+    "lastSyncedAt": "2026-10-22T12:20:45.676Z",
+    "syncCode": "TM-3GMY",
+    "pairedUserId": "user_1792666232361_q3ks",
+    "pairedUserName": "test_canbo",
+    "pairedSyncCode": "TM-KFQS",
+    "pairedAt": "2026-10-23T09:39:14.803Z",
+    "lastActiveAt": "2026-10-22T12:20:45.676Z"
+  },
+  {
+    "id": "user_1792762804594_zu4c",
+    "username": "officer_hcm",
+    "email": "officer@example.com",
+    "password": "Password123!",
+    "authProvider": "password",
+    "isProfileCompleted": true,
+    "syncCode": "TM-9Z39",
+    "profile": {
+      "displayName": "officer_hcm",
+      "role": "Cán bộ phụ trách",
+      "units": [
+        "Ban Thanh Niên",
+        "Chi hội 1"
+      ],
+      "birthDate": "1995-01-01",
+      "avatarUrl": "https://api.dicebear.com/7.x/initials/svg?seed=officer_hcm",
+      "email": "officer@example.com",
+      "phone": "",
+      "weeklyGoal": 3,
+      "notifications": {
+        "browserEnabled": true,
+        "soundEnabled": true,
+        "priorityReminders": true,
+        "overdueAlerts": true
+      },
+      "connectedAppsList": [],
+      "bio": ""
+    },
+    "createdAt": "2026-10-23T13:40:04.594Z",
+    "lastActiveAt": "2026-10-23T13:42:08.449Z",
+    "lastSyncedAt": "2026-10-23T13:42:08.449Z"
+  },
+  {
+    "id": "user_1792765168414_xgga",
+    "username": "nguyenvana",
+    "email": "nguyenvana@agency.gov.vn",
+    "password": "123456",
+    "authProvider": "password",
+    "isProfileCompleted": true,
+    "syncCode": "TM-2PVZ",
+    "profile": {
+      "displayName": "nguyenvana",
+      "role": "Cán bộ phụ trách",
+      "units": [
+        "Ban Thanh Niên",
+        "Chi hội 1"
+      ],
+      "birthDate": "1995-01-01",
+      "avatarUrl": "https://api.dicebear.com/7.x/initials/svg?seed=nguyenvana",
+      "email": "nguyenvana@agency.gov.vn",
+      "phone": "",
+      "weeklyGoal": 3,
+      "notifications": {
+        "browserEnabled": true,
+        "soundEnabled": true,
+        "priorityReminders": true,
+        "overdueAlerts": true
+      },
+      "connectedAppsList": [],
+      "bio": ""
+    },
+    "createdAt": "2026-10-23T14:19:28.414Z",
+    "lastActiveAt": "2026-10-23T14:21:43.167Z",
+    "lastSyncedAt": "2026-10-23T14:21:43.167Z"
+  }
+]

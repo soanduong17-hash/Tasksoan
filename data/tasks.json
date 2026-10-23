@@ -1,0 +1,127 @@
+{
+  "user_1792666232361_q3ks": [
+    {
+      "id": "task-999",
+      "title": "Công tác tháng 10",
+      "priority": "high",
+      "status": "in_progress"
+    },
+    {
+      "id": "task_sync_test_1",
+      "title": "Nhiệm vụ đồng bộ tăng dần",
+      "status": "pending",
+      "unit": "Ban Thanh Niên",
+      "priority": "medium",
+      "dueDate": "2026-10-25T17:00:00Z",
+      "subtasks": [],
+      "progress": 0
+    }
+  ],
+  "user_g_1792671645676_f5xd": [
+    {
+      "id": "task-999",
+      "title": "Công tác tháng 10",
+      "priority": "high",
+      "status": "in_progress"
+    },
+    {
+      "id": "task_sync_test_1",
+      "title": "Nhiệm vụ đồng bộ tăng dần",
+      "status": "pending",
+      "unit": "Ban Thanh Niên",
+      "priority": "medium",
+      "dueDate": "2026-10-25T17:00:00Z",
+      "subtasks": [],
+      "progress": 0
+    }
+  ],
+  "user_1792762804594_zu4c": [
+    {
+      "id": "task-1792762928438",
+      "title": "Xây dựng kế hoạch hoạt động quý 3",
+      "description": "Kế hoạch hành động cá nhân của tôi cho mảng việc \"Xây dựng kế hoạch hoạt động quý 3\" (thực hiện cho Ban Thanh Niên). Tôi chủ động rà soát yêu cầu và xử lý dứt điểm từng bước.",
+      "unit": "Ban Thanh Niên",
+      "priority": "medium",
+      "aiAnalysis": "Tham mưu hành động cho bạn (Ban Thanh Niên): Với phần việc \"Xây dựng kế hoạch hoạt động quý 3\", bạn nên dành 40% thời gian đầu để làm rõ yêu cầu và chuẩn bị công cụ. Khi khâu chuẩn bị vững chắc, bạn sẽ xử lý các khâu tiếp theo rất nhanh và tránh được nguy cơ dồn việc vào phút chót.",
+      "createdAt": "2026-10-23T13:40:00.000Z",
+      "dueDate": "2026-10-26T13:40:00.000Z",
+      "subtasks": [
+        {
+          "id": "ai-wbs-1792762900221-0",
+          "title": "Tôi rà soát mục tiêu, xác định tiêu chuẩn đầu ra cụ thể và thời hạn cho \"Xây dựng kế hoạch hoạt động quý 3\"",
+          "phase": "Chuẩn bị",
+          "completed": false,
+          "resource": {
+            "title": "Khung xác định mục tiêu công việc cá nhân",
+            "url": "https://www.google.com/search?q=h%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20l%E1%BA%ADp%20k%E1%BA%BF%20ho%E1%BA%A1ch%20c%C3%B4ng%20vi%E1%BB%87c%20c%C3%A1%20nh%C3%A2n%20hi%E1%BB%87u%20qu%E1%BA%A3",
+            "description": "Bản ghi nhớ rõ ràng những việc mình cần nộp"
+          }
+        },
+        {
+          "id": "ai-wbs-1792762900221-1",
+          "title": "Tôi chuẩn bị đầy đủ dữ liệu, biểu mẫu và các điều kiện cần thiết",
+          "phase": "Chuẩn bị",
+          "completed": false,
+          "resource": {
+            "title": "Checklist chuẩn bị dữ liệu và tài liệu mẫu",
+            "url": "https://www.google.com/search?q=checklist%20chu%E1%BA%A9n%20b%E1%BB%8B%20c%C3%B4ng%20vi%E1%BB%87c%20chuy%C3%AAn%20m%C3%B4n",
+            "description": "Thu thập sẵn sàng để khi làm không bị gián đoạn"
+          }
+        },
+        {
+          "id": "ai-wbs-1792762900221-2",
+          "title": "Tôi liên hệ trước với các bên liên quan để thống nhất mốc thời gian phối hợp",
+          "phase": "Chuẩn bị",
+          "completed": false,
+          "resource": {
+            "title": "Mẫu email / tin nhắn trao đổi phối hợp công việc",
+            "url": "https://www.google.com/search?q=c%C3%A1ch%20ph%E1%BB%91i%20h%E1%BB%A3p%20c%C3%B4ng%20vi%E1%BB%87c%20hi%E1%BB%87u%20qu%E1%BA%A3",
+            "description": "Chủ động hẹn mốc phối hợp để không phải chờ đợi"
+          }
+        },
+        {
+          "id": "ai-wbs-1792762900221-3",
+          "title": "Tôi tập trung triển khai giải quyết các phần việc trọng tâm theo thứ tự ưu tiên",
+          "phase": "Thực hiện",
+          "completed": false,
+          "resource": {
+            "title": "Phương pháp quản lý thời gian và tập trung",
+            "url": "https://www.google.com/search?q=ph%C6%B0%C6%A1ng%20ph%C3%A1p%20l%C3%A0m%20vi%E1%BB%87c%20t%E1%BA%ADp%20trung%20d%E1%BB%A9t%20%C4%91i%E1%BB%83m",
+            "description": "Mẹo xử lý dứt điểm từng đầu việc trong ngày"
+          }
+        },
+        {
+          "id": "ai-wbs-1792762900221-4",
+          "title": "Tôi tự rà soát lại toàn bộ kế hoạch và dự toán trước khi trình duyệt",
+          "phase": "Kiểm tra",
+          "completed": false,
+          "resource": {
+            "title": "Checklist tự kiểm tra chất lượng sản phẩm",
+            "url": "https://www.google.com/search?q=c%C3%A1ch%20t%E1%BB%B1%20ki%E1%BB%83m%20tra%20c%C3%B4ng%20vi%E1%BB%87c%20tr%C6%B0%E1%BB%9Bc%20khi%20n%E1%BB%99p",
+            "description": "Bộ tiêu chí rà soát để đảm bảo chất lượng cao nhất"
+          }
+        },
+        {
+          "id": "ai-wbs-1792762900221-5",
+          "title": "Tôi bàn giao kết quả nghiệm thu hoàn chỉnh và lưu trữ minh chứng vào hệ thống",
+          "phase": "Hoàn thành",
+          "completed": false,
+          "resource": {
+            "title": "Mẫu phiếu bàn giao và lưu trữ minh chứng",
+            "url": "https://www.google.com/search?q=m%E1%BA%ABu%20b%C3%A1o%20c%C3%A1o%20ho%C3%A0n%20th%C3%A0nh%20c%C3%B4ng%20vi%E1%BB%87c%20chuy%C3%AAn%20m%C3%B4n",
+            "description": "Ghi nhận công việc hoàn thành xuất sắc và đúng hạn"
+          }
+        }
+      ],
+      "progress": 0,
+      "status": "pending",
+      "attachments": [],
+      "links": [],
+      "reminder": {
+        "enabled": true,
+        "minutesBefore": 60
+      }
+    }
+  ],
+  "user_1792765168414_xgga": []
+}
