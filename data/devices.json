@@ -68,5 +68,42 @@
       "status": "online",
       "ip": "127.0.0.1"
     }
+  ],
+  "user_1792773750297_2nen": [
+    {
+      "deviceId": "dev_i4gtz2ck_mvl77n2y",
+      "deviceName": "Linux (Google Chrome)",
+      "deviceType": "desktop",
+      "browser": "Google Chrome",
+      "os": "Linux",
+      "lastActive": "2026-10-23T16:43:19.580Z",
+      "loggedInAt": "2026-10-23T16:42:46.167Z",
+      "status": "online",
+      "ip": "127.0.0.1"
+    },
+    {
+      "deviceId": "dev_k9i29h4b_mvl87kvh",
+      "deviceName": "Linux (Google Chrome)",
+      "deviceType": "desktop",
+      "browser": "Google Chrome",
+      "os": "Linux",
+      "lastActive": "2026-10-23T17:10:42.940Z",
+      "loggedInAt": "2026-10-23T17:10:42.940Z",
+      "status": "online",
+      "ip": "127.0.0.1"
+    }
+  ],
+  "user_1792776107886_nvnq": [
+    {
+      "deviceId": "dev_i6djqkd8_mvl8m9ni",
+      "deviceName": "Linux (Google Chrome)",
+      "deviceType": "desktop",
+      "browser": "Google Chrome",
+      "os": "Linux",
+      "lastActive": "2026-10-23T17:22:08.101Z",
+      "loggedInAt": "2026-10-23T17:22:08.101Z",
+      "status": "online",
+      "ip": "127.0.0.1"
+    }
   ]
 }

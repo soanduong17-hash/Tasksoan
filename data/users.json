@@ -156,5 +156,67 @@
     "createdAt": "2026-10-23T14:19:28.414Z",
     "lastActiveAt": "2026-10-23T14:21:43.167Z",
     "lastSyncedAt": "2026-10-23T14:21:43.167Z"
+  },
+  {
+    "id": "user_1792773750297_2nen",
+    "username": "canbo_thanhnien",
+    "email": "canbo.thanhnien@taskmaster.vn",
+    "password": "CanBo@2026",
+    "authProvider": "password",
+    "isProfileCompleted": true,
+    "syncCode": "TM-TEEE",
+    "profile": {
+      "displayName": "canbo_thanhnien",
+      "role": "Cán bộ phụ trách",
+      "units": [
+        "Ban Thanh Niên",
+        "Chi hội 1"
+      ],
+      "birthDate": "1995-01-01",
+      "avatarUrl": "https://api.dicebear.com/7.x/initials/svg?seed=canbo_thanhnien",
+      "email": "canbo.thanhnien@taskmaster.vn",
+      "phone": "",
+      "weeklyGoal": 3,
+      "notifications": {
+        "browserEnabled": true,
+        "soundEnabled": true,
+        "priorityReminders": true,
+        "overdueAlerts": true
+      },
+      "connectedAppsList": [],
+      "bio": ""
+    },
+    "createdAt": "2026-10-23T16:42:30.297Z",
+    "lastActiveAt": "2026-10-23T17:10:42.781Z",
+    "lastSyncedAt": "2026-10-23T16:43:19.316Z"
+  },
+  {
+    "id": "user_1792776107886_nvnq",
+    "username": "canbo_ha",
+    "email": "thuha@example.com",
+    "password": "SecurePass123!",
+    "authProvider": "password",
+    "isProfileCompleted": true,
+    "syncCode": "TM-N22B",
+    "profile": {
+      "displayName": "Hoàng Thu Hà",
+      "role": "",
+      "units": [],
+      "birthDate": "1995-01-01",
+      "avatarUrl": "https://api.dicebear.com/7.x/initials/svg?seed=canbo_ha",
+      "email": "thuha@example.com",
+      "phone": "",
+      "weeklyGoal": 3,
+      "notifications": {
+        "browserEnabled": true,
+        "soundEnabled": true,
+        "priorityReminders": true,
+        "overdueAlerts": true
+      },
+      "connectedAppsList": []
+    },
+    "createdAt": "2026-10-23T17:21:47.886Z",
+    "lastActiveAt": "2026-10-23T17:22:07.976Z",
+    "lastSyncedAt": "2026-10-23T17:21:47.886Z"
   }
 ]

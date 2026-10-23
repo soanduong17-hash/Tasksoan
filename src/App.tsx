@@ -8,7 +8,6 @@ import { ProfileView } from './components/ProfileView';
 import { TaskFormModal } from './components/TaskFormModal';
 import { ConfirmDeleteModal } from './components/ConfirmDeleteModal';
 import { AuthView } from './components/AuthView';
-import { ProfileOnboardingModal } from './components/ProfileOnboardingModal';
 import { Task, UserProfile, UserAccount } from './types/task';
 import { getTaskStatus } from './utils/taskCalculations';
 import { playNotificationSound, sendBrowserNotification } from './utils/audioNotification';
@@ -23,6 +22,16 @@ import {
   logSyncEvent,
   requestPersistentStorage,
 } from './utils/indexedDb';
+import { onAuthStateChanged } from 'firebase/auth';
+import { testFirestoreConnection, auth } from './firebase';
+import {
+  saveTaskToFirestore,
+  deleteTaskFromFirestore,
+  saveUserToFirestore,
+  subscribeToUserTasks,
+  logUserActivityToFirestore,
+  fetchTasksFromFirestore,
+} from './services/firestoreService';
 
 export default function App() {
   // 1. Online / Offline Status
@@ -118,7 +127,59 @@ export default function App() {
     };
   }, [currentUser?.id]);
 
-  // Sync profile to localStorage
+  // 1. Boot connection test to Firestore
+  useEffect(() => {
+    testFirestoreConnection().catch(() => {});
+  }, []);
+
+  // 2. Real-time Firestore Task Subscription (only when user is authenticated with Firebase)
+  useEffect(() => {
+    if (!currentUser?.id || !isOnline) return;
+    if (!auth.currentUser || auth.currentUser.uid !== currentUser.id) return;
+
+    const unsubscribe = subscribeToUserTasks(
+      currentUser.id,
+      (remoteTasks) => {
+        if (Array.isArray(remoteTasks) && remoteTasks.length > 0) {
+          setTasks((prev) => {
+            if (JSON.stringify(remoteTasks) !== JSON.stringify(prev)) {
+              localStorage.setItem(`taskmaster_tasks_${currentUser.id}`, JSON.stringify(remoteTasks));
+              saveLocalTasksToIndexedDB(currentUser.id, remoteTasks).catch(() => {});
+              return remoteTasks;
+            }
+            return prev;
+          });
+        }
+      },
+      (err) => {
+        console.warn('[Firestore Subscription] Listener notice:', err);
+      }
+    );
+
+    return () => {
+      if (typeof unsubscribe === 'function') unsubscribe();
+    };
+  }, [currentUser?.id, isOnline]);
+
+  // 3. Firebase Auth State Listener
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
+      if (fbUser && (!currentUser || currentUser.id === fbUser.uid)) {
+        fetchTasksFromFirestore(fbUser.uid)
+          .then((remoteTasks) => {
+            if (Array.isArray(remoteTasks) && remoteTasks.length > 0) {
+              setTasks(remoteTasks);
+              localStorage.setItem(`taskmaster_tasks_${fbUser.uid}`, JSON.stringify(remoteTasks));
+              saveLocalTasksToIndexedDB(fbUser.uid, remoteTasks).catch(() => {});
+            }
+          })
+          .catch(() => {});
+      }
+    });
+    return () => unsubscribe();
+  }, [currentUser]);
+
+  // Sync profile to localStorage and Firestore
   useEffect(() => {
     if (currentUser) {
       const updatedUser: UserAccount = {
@@ -126,8 +187,11 @@ export default function App() {
         profile: userProfile,
       };
       localStorage.setItem('taskmaster_current_user', JSON.stringify(updatedUser));
+      if (isOnline && auth.currentUser && auth.currentUser.uid === currentUser.id) {
+        saveUserToFirestore(updatedUser).catch(() => {});
+      }
     }
-  }, [userProfile, currentUser]);
+  }, [userProfile, currentUser, isOnline]);
 
   // Flush offline sync queue to server
   const flushOfflineQueue = useCallback(async () => {
@@ -488,7 +552,10 @@ export default function App() {
     } catch {}
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+    } catch {}
     localStorage.removeItem('taskmaster_current_user');
     setCurrentUser(null);
     setTasks([]);
@@ -510,6 +577,12 @@ export default function App() {
       }
       return nextTasks;
     });
+
+    // Direct Firestore write and activity logging
+    if (currentUser && isOnline) {
+      saveTaskToFirestore(currentUser.id, savedTask).catch(() => {});
+      logUserActivityToFirestore(currentUser.id, 'task_create', `Tạo nhiệm vụ: ${savedTask.title}`).catch(() => {});
+    }
 
     if (soundEnabled) {
       playNotificationSound('success');
@@ -535,6 +608,12 @@ export default function App() {
       }
       return nextTasks;
     });
+
+    // Direct Firestore write and activity logging
+    if (currentUser && isOnline) {
+      saveTaskToFirestore(currentUser.id, updatedTask).catch(() => {});
+      logUserActivityToFirestore(currentUser.id, 'task_update', `Cập nhật nhiệm vụ: ${updatedTask.title}`).catch(() => {});
+    }
 
     // Background sync with immediate latest tasks
     if (nextTasks.length > 0) {
@@ -568,6 +647,13 @@ export default function App() {
       }
       return nextTasks;
     });
+
+    // Direct Firestore deletion and activity logging
+    if (currentUser && isOnline) {
+      deleteTaskFromFirestore(currentUser.id, taskId).catch(() => {});
+      logUserActivityToFirestore(currentUser.id, 'task_delete', `Xóa nhiệm vụ: ${taskId}`).catch(() => {});
+    }
+
     setTaskToDelete(null);
     triggerSync(nextTasks);
   };
@@ -664,16 +750,7 @@ export default function App() {
     return <AuthView onLoginSuccess={handleLoginSuccess} isOnline={isOnline} />;
   }
 
-  // Gate 2: Logged in but Profile Not Yet Completed -> Show Mandatory Profile Onboarding Modal
-  if (!currentUser.isProfileCompleted) {
-    return (
-      <ProfileOnboardingModal
-        user={currentUser}
-        onComplete={handleProfileOnboardingComplete}
-        isOnline={isOnline}
-      />
-    );
-  }
+  // Authenticated -> Access Full Application directly (user configures role and units in Profile tab)
 
   // Gate 3: Authenticated & Profile Set -> Access Full Application
   return (

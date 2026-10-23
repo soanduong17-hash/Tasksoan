@@ -1091,6 +1091,61 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
             )}
           </div>
 
+          {/* CƠ SỞ DỮ LIỆU FIRESTORE CLOUD DATABASE & THEO DÕI NGƯỜI DÙNG */}
+          <div className="p-5 rounded-2xl bg-gradient-to-r from-indigo-950/60 to-slate-900/80 border border-indigo-500/30 space-y-4 shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-indigo-500/20">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-indigo-600/30 text-indigo-300 flex items-center justify-center border border-indigo-400/40">
+                  <Database className="w-4 h-4 text-indigo-400" />
+                </div>
+                <div>
+                  <h4 className="font-extrabold text-sm text-white flex items-center gap-2 flex-wrap">
+                    <span>Cơ Sở Dữ Liệu Đám Mây Firestore</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 font-bold uppercase">
+                      Google Cloud Firestore
+                    </span>
+                  </h4>
+                  <p className="text-[11px] text-indigo-200/80">
+                    Lưu trữ phân tán, tự động sao lưu và bảo mật theo từng người dùng
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 self-start sm:self-auto">
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-800/60">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  Đồng bộ thời gian thực (Real-time)
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div className="p-3 rounded-xl bg-black/25 border border-white/5 space-y-1">
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">Dự án Firebase:</span>
+                <span className="font-mono text-indigo-300 font-bold text-[11px] truncate block">chrome-aspect-wcjpc</span>
+              </div>
+              <div className="p-3 rounded-xl bg-black/25 border border-white/5 space-y-1">
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">Bảo mật Firestore:</span>
+                <span className="text-emerald-300 font-bold text-[11px] flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Security Rules Hardened</span>
+                </span>
+              </div>
+              <div className="p-3 rounded-xl bg-black/25 border border-white/5 space-y-1">
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">Không gian lưu trữ:</span>
+                <span className="font-mono text-sky-300 font-bold text-[11px] truncate block">
+                  /users/{currentUser?.id ? `${currentUser.id.substring(0, 10)}...` : 'user_uid'}/tasks
+                </span>
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-indigo-900/30 border border-indigo-500/20 text-[11px] text-indigo-200/90 leading-relaxed flex items-start gap-2">
+              <Sparkles className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <strong>Cơ chế tự động hóa Firestore:</strong> Mọi thay đổi về nhiệm vụ, hồ sơ cá nhân và phiên đăng nhập đều được truyền tức thời lên Firestore Cloud. Khi đăng nhập trên thiết bị mới, dữ liệu sẽ tự động khôi phục hoàn chỉnh.
+              </div>
+            </div>
+          </div>
+
           {/* QUẢN LÝ LƯU TRỮ THIẾT BỊ & XIN QUYỀN LƯU BỀN VỮNG */}
           <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-white/10">
@@ -1246,6 +1301,22 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
               />
             </div>
 
+            <div>
+              <label className="text-xs font-semibold text-slate-600 mb-1 flex items-center justify-between">
+                <span>Chức Vụ / Vai Trò Phụ Trách:</span>
+                <span className="text-[11px] font-semibold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">
+                  Tôi tự cài đặt
+                </span>
+              </label>
+              <input
+                type="text"
+                value={formData.role || ''}
+                onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                placeholder="Ví dụ: Cán bộ chuyên trách, Bí thư Đoàn, Trưởng phòng..."
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 text-xs sm:text-sm font-medium"
+              />
+            </div>
+
             <div className="md:col-span-2 p-4 rounded-2xl bg-indigo-50/40 border border-indigo-100">
               <BirthDateInput
                 value={formData.birthDate}
@@ -1360,27 +1431,37 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
 
           <div className="pt-2">
             <span className="text-xs font-semibold text-slate-600 block mb-2">
-              Danh sách đơn vị đã thiết lập:
+              Danh sách đơn vị đã thiết lập ({formData.units.length}):
             </span>
-            <div className="flex flex-wrap gap-2">
-              {formData.units.map((unit) => (
-                <div
-                  key={unit}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-800 text-xs font-bold border border-slate-200 transition-all group"
-                >
-                  <Building2 className="w-3.5 h-3.5 text-indigo-600" />
-                  <span>{unit}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveUnit(unit)}
-                    className="text-slate-400 hover:text-rose-600 transition-colors cursor-pointer"
-                    aria-label={`Xóa đơn vị ${unit}`}
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
+            {formData.units.length === 0 ? (
+              <div className="p-4 rounded-2xl bg-slate-50 border border-dashed border-slate-200 text-xs text-slate-500 flex items-center gap-3">
+                <Building2 className="w-5 h-5 text-indigo-400 shrink-0" />
+                <div>
+                  <span className="font-semibold text-slate-700 block">Bạn chưa cài đặt đơn vị nào</span>
+                  <span>Hãy nhập tên đơn vị bạn phụ trách hoặc sinh hoạt ở ô phía trên rồi bấm nút <strong>&quot;Thêm&quot;</strong> để tự cài đặt.</span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {formData.units.map((unit) => (
+                  <div
+                    key={unit}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-800 text-xs font-bold border border-slate-200 transition-all group"
+                  >
+                    <Building2 className="w-3.5 h-3.5 text-indigo-600" />
+                    <span>{unit}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveUnit(unit)}
+                      className="text-slate-400 hover:text-rose-600 transition-colors cursor-pointer"
+                      aria-label={`Xóa đơn vị ${unit}`}
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

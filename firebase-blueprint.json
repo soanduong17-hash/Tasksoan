@@ -1,0 +1,93 @@
+{
+  "entities": {
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "User profile and account configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique user identifier" },
+        "username": { "type": "string", "maxLength": 100, "description": "Display username" },
+        "email": { "type": "string", "format": "email", "maxLength": 150, "description": "User email address" },
+        "isProfileCompleted": { "type": "boolean", "description": "Whether onboarding profile is completed" },
+        "syncCode": { "type": "string", "maxLength": 32, "description": "Pairing sync code" },
+        "profile": { "type": "object", "description": "Detailed user profile data" },
+        "createdAt": { "type": "string", "description": "Account creation ISO timestamp" },
+        "lastActiveAt": { "type": "string", "description": "Last active ISO timestamp" },
+        "lastSyncedAt": { "type": "string", "description": "Last synchronization ISO timestamp" }
+      },
+      "required": ["id", "email", "createdAt"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "TaskMaster manageable task item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128, "description": "Unique task ID" },
+        "userId": { "type": "string", "maxLength": 128, "description": "Owner user UID" },
+        "title": { "type": "string", "maxLength": 500, "description": "Title of the task" },
+        "description": { "type": "string", "maxLength": 5000, "description": "Detailed description" },
+        "unit": { "type": "string", "maxLength": 150, "description": "Department or executing unit" },
+        "priority": { "type": "string", "enum": ["high", "medium", "low"], "description": "Task priority level" },
+        "status": { "type": "string", "enum": ["pending", "in_progress", "completed", "overdue"], "description": "Task execution status" },
+        "progress": { "type": "number", "description": "Completion percentage 0-100" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" },
+        "dueDate": { "type": "string", "description": "Due date timestamp" },
+        "completedAt": { "type": "string", "description": "Finish timestamp if completed" },
+        "subtasks": { "type": "array", "description": "Subtask checklist items" },
+        "attachments": { "type": "array", "description": "Uploaded task attachments metadata" },
+        "links": { "type": "array", "description": "Relevant task links" },
+        "reminder": { "type": "object", "description": "Configured reminder settings" },
+        "notes": { "type": "string", "maxLength": 5000, "description": "Optional user notes" },
+        "aiAnalysis": { "type": "string", "maxLength": 10000, "description": "AI analysis and suggestions" }
+      },
+      "required": ["id", "userId", "title", "priority", "status", "createdAt", "dueDate"]
+    },
+    "DeviceSession": {
+      "title": "DeviceSession",
+      "description": "Logged-in device session for multi-device sync",
+      "type": "object",
+      "properties": {
+        "deviceId": { "type": "string", "maxLength": 128, "description": "Unique device identifier" },
+        "deviceName": { "type": "string", "maxLength": 150, "description": "Human-friendly device name" },
+        "deviceType": { "type": "string", "maxLength": 50, "description": "Desktop, mobile or tablet" },
+        "browser": { "type": "string", "maxLength": 100, "description": "Browser name" },
+        "os": { "type": "string", "maxLength": 100, "description": "Operating system" },
+        "lastActive": { "type": "string", "description": "Last active ISO timestamp" },
+        "loggedInAt": { "type": "string", "description": "Login ISO timestamp" },
+        "status": { "type": "string", "enum": ["online", "idle", "revoked"], "description": "Device status" }
+      },
+      "required": ["deviceId", "deviceName", "lastActive", "status"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "User audit and sync activity log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128, "description": "Log identifier" },
+        "userId": { "type": "string", "maxLength": 128, "description": "User identifier" },
+        "action": { "type": "string", "maxLength": 100, "description": "Action performed" },
+        "details": { "type": "string", "maxLength": 2000, "description": "Action details" },
+        "timestamp": { "type": "string", "description": "Log timestamp" }
+      },
+      "required": ["id", "userId", "action", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserAccount",
+      "description": "User profile and personal workspace document"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "User personal tasks subcollection with strict owner isolation"
+    },
+    "/users/{userId}/devices/{deviceId}": {
+      "schema": "DeviceSession",
+      "description": "User authorized devices for multi-device sync"
+    },
+    "/users/{userId}/activity_logs/{logId}": {
+      "schema": "ActivityLog",
+      "description": "User audit trail and sync history"
+    }
+  }
+}

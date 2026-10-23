@@ -97,7 +97,7 @@ export interface UserAccount {
   username: string;
   email: string;
   password?: string;
-  authProvider?: 'password';
+  authProvider?: 'password' | 'google' | 'firebase';
   isProfileCompleted: boolean;
   profile: UserProfile;
   createdAt: string;

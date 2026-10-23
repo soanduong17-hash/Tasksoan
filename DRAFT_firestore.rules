@@ -1,0 +1,87 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidUser(data, userId) {
+      return data.id is string && data.id == userId
+        && (!('username' in data) || (data.username is string && data.username.size() <= 100))
+        && (!('email' in data) || (data.email is string && data.email.size() <= 150));
+    }
+
+    function isValidTask(data, userId) {
+      return data.id is string && data.id.size() <= 128
+        && data.userId == userId
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 500
+        && (!('description' in data) || (data.description is string && data.description.size() <= 5000))
+        && (!('unit' in data) || (data.unit is string && data.unit.size() <= 150))
+        && data.priority in ['high', 'medium', 'low']
+        && data.status in ['pending', 'in_progress', 'completed', 'overdue']
+        && (!('progress' in data) || (data.progress is number && data.progress >= 0 && data.progress <= 100))
+        && (!('notes' in data) || (data.notes is string && data.notes.size() <= 5000))
+        && (!('aiAnalysis' in data) || (data.aiAnalysis is string && data.aiAnalysis.size() <= 10000))
+        && (!('subtasks' in data) || (data.subtasks is list && data.subtasks.size() <= 100))
+        && (!('attachments' in data) || (data.attachments is list && data.attachments.size() <= 50))
+        && (!('links' in data) || (data.links is list && data.links.size() <= 50));
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId) && isValidId(userId);
+      allow list: if false;
+      allow create: if isOwner(userId) && isValidId(userId) && isValidUser(incoming(), userId);
+      allow update: if isOwner(userId) && isValidId(userId) && isValidUser(incoming(), userId)
+        && incoming().id == existing().id;
+      allow delete: if isOwner(userId) && isValidId(userId);
+
+      // Tasks subcollection
+      match /tasks/{taskId} {
+        allow get: if isOwner(userId) && isValidId(userId) && isValidId(taskId);
+        allow list: if isOwner(userId) && isValidId(userId);
+        allow create: if isOwner(userId) && isValidId(userId) && isValidId(taskId)
+          && isValidTask(incoming(), userId)
+          && incoming().userId == request.auth.uid;
+        allow update: if isOwner(userId) && isValidId(userId) && isValidId(taskId)
+          && isValidTask(incoming(), userId)
+          && incoming().id == existing().id
+          && incoming().userId == existing().userId
+          && incoming().createdAt == existing().createdAt;
+        allow delete: if isOwner(userId) && isValidId(userId) && isValidId(taskId);
+      }
+
+      // Devices subcollection
+      match /devices/{deviceId} {
+        allow get, list, create, update, delete: if isOwner(userId) && isValidId(userId) && isValidId(deviceId);
+      }
+
+      // Activity logs subcollection (append-only)
+      match /activity_logs/{logId} {
+        allow get, list, create: if isOwner(userId) && isValidId(userId) && isValidId(logId);
+        allow update, delete: if false;
+      }
+    }
+  }
+}
